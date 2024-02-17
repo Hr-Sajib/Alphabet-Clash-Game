@@ -79,18 +79,18 @@
         </div>
 
         <div class="flex justify-around gap-96 ">
-            <button class="bg-white rounded-md w-24 h-8 font-bold text-black">Life</button>
-            <button class="bg-white rounded-md w-24 h-8 font-bold text-black">Score</button>
-        </div>
+            <button class="bg-white rounded-md w-24 h-8 font-bold text-black">Life <span id="lifeCount" class="text-purple-700 font-extrabold">3</span></button>
+            <button class="bg-white rounded-md w-24 h-8 font-bold text-black">Score <span id="scoreCount" class="text-purple-700 font-extrabold">0</span></button>
+        </div> 
         
     </section>
 
     <!-- score -->
-    <section class="hidden flex justify-center items-center min-h-screen">
+    <section id="scoreSection" class="hidden flex justify-center items-center min-h-screen">
         <div class="w-[25vw] h-[20vh] bg-gray-700 border rounded-xl flex flex-col items-center">
-            <h1 class="text-white text-3xl">Score: <span class="font-extrabold text-red-300">15</span></h1>
+            <h1 class="text-white text-3xl">Score: <span id="finalScore" class="font-extrabold text-red-300">15</span></h1>
             <p>Practice will make you a pro!</p>
-            <button class="btn bg-white text-black mt-2 hover:text-white">Play Again</button>
+            <button onclick="playAgain()" class="btn bg-white text-black mt-2 hover:text-white">Play Again</button>
         </div>
     </section>
     </main>
