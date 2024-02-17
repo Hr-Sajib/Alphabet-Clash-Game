@@ -21,7 +21,10 @@ function BgNormal(elementId){
 
 function play(){
     hideElementById('homeSection');
-    showElementById('gameSection');
+    hideElementById('homeSection');
+    showElementById('scoreSection');
+    document.getElementById('scoreCount').innerText = 0;
+    document.getElementById('lifeCount').innerText = 3;
     continueGame();
 }
 
@@ -40,25 +43,33 @@ document.addEventListener('keyup', handleKeypressEvent);
 function handleKeypressEvent(event){
     const playerPressed = event.key;
     const expectedKey = document.getElementById('currentLater').innerText;
-    let score = parseInt(document.getElementById('scoreCount').innerText);
-    let life = parseInt(document.getElementById('lifeCount').innerText);
+
 
     if(playerPressed === expectedKey){
-        continueGame();
         BgNormal(expectedKey);
-        score+=1;
-        document.getElementById('scoreCount').innerText = score;
+
+        //score update
+        const currentScore = parseInt(document.getElementById('scoreCount').innerText);
+        const newScore = currentScore + 1;
+        document.getElementById('scoreCount').innerText = newScore;
+
+        continueGame();
     }
     else{
-        life-=1;
-        document.getElementById('lifeCount').innerText = life;
-        if(life===0){
-            exitGame();
+        BgNormal(expectedKey);
+        //life update
+        const currentLife = parseInt(document.getElementById('lifeCount').innerText);
+        const newLife = currentLife - 1;
+        document.getElementById('lifeCount').innerText = newLife;
+        continueGame();
+
+        if(newLife === 0){
+            gameOver();
         }
     }
 }
 
-function exitGame(){
+function gameOver(){
     hideElementById('gameSection');
     showElementById('scoreSection');
     setFinalScore();
@@ -66,4 +77,13 @@ function exitGame(){
 
 function setFinalScore(){
     document.getElementById('finalScore').innerText = document.getElementById('scoreCount').innerText;
+}
+
+function playAgain(){
+    var elements = document.getElementsByClassName('kbd');
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].classList.remove('bg-red-100', 'text-black');
+    }
+    
+  play();
 }
