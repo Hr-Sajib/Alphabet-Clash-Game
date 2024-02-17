@@ -21,8 +21,8 @@ function BgNormal(elementId){
 
 function play(){
     hideElementById('homeSection');
-    hideElementById('homeSection');
-    showElementById('scoreSection');
+    showElementById('gameSection');
+    hideElementById('scoreSection');
     document.getElementById('scoreCount').innerText = 0;
     document.getElementById('lifeCount').innerText = 3;
     continueGame();
